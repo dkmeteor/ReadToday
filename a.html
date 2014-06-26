@@ -1,0 +1,14 @@
+<script type="text/javascript">
+//var storage = window.localStorage;
+//var myDate = new Date();
+//storage.setItem(myDate.getTime(),"aaaaaa");
+
+
+
+var length=localStorage.length;
+for(i=0;i<length;i++)
+{
+var key=localStorage.key(i);
+document.write(localStorage.getItem(key));
+}
+</script>

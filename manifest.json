@@ -1,0 +1,27 @@
+{
+  "name": "ReadToday",
+  "version": "0.1.0",
+  "icons" : {
+      "48": "charming.jpg"
+  },
+  "description": "Transform Image",
+  "page_action": {
+      "default_title": "",
+      "default_icon": "charming.jpg"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js":["foo.js"],
+      "run_at":"document_start"
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "notifications",
+    "idle",
+    "http://*/",
+    "https://*/"
+  ],
+  "manifest_version":2
+}
