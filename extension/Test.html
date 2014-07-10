@@ -14,16 +14,21 @@
     	console.info("Failed to connect to database."); 
  	else
  		console.info("connect to database success."); 
-
-
-db.transaction( function(tx) { tx.executeSql("SELECT COUNT(*) FROM ReadToday",
- [], null, function(tx, error) { tx.executeSql("CREATE TABLE ReadToday (id REAL UNIQUE, label TEXT, timestamp REAL)",
- [], null, null); } ); } ); 
-
-	db.transaction( function(tx) { tx.executeSql("INSERT INTO ReadToday (label, timestamp) values(?, ?)",["lael", new Date().getTime()], null, null); } ); 
-
+	
+	if(false)
+	{
+		db.transaction(function(tx){  
+        tx.executeSql("DROP TABLE ReadToday", [], function(tx, results){  
+          
+            },function(tx,error){  
+                alert(error.message);  
+            });  
+		}); 
+	}
 	db.transaction( function(tx) { tx.executeSql("SELECT * FROM ReadToday", [],function(tx, result) { 
 		console.info(result);
 		for(var i = 0; i < result.rows.length; i++){ 
-		document.write('<b>' + result.rows.item(i)['label'] + '</b><br />'); } }, null); } ); 
+		document.write('<b>' + result.rows.item(i)['content'] + '</b><br />'); } }, function(tx,error){  
+                console.error(error.message);  
+            }); } ); 
 </script>
